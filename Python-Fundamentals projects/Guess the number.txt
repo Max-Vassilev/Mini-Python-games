@@ -1,0 +1,14 @@
+import random
+
+num = random.randint(1, 100)
+
+
+while True:
+    my_num = int(input('Enter your guess here: '))
+    if my_num == num:
+        print(f"Congratulations! You found the number.")
+        break
+    elif my_num < num:
+        print(f"Higher :)")
+    else:
+        print("Lower :)")
