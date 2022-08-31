@@ -124,3 +124,4 @@ while True:
         ball.setx(-340)
         ball.dx *= -1
 
+<img width="665" alt="Screenshot 2022-08-31 192652" src="https://user-images.githubusercontent.com/106106321/187731549-def99d5a-6dff-470e-a337-58f0e1cebd51.png">
