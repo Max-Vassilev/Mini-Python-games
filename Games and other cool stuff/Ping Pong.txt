@@ -33,7 +33,7 @@ paddle_b.shapesize(8, 1)
 ball = turtle.Turtle()
 ball.speed(0)
 ball.shape("square")
-ball.color("white")
+ball.color("orange")
 ball.penup()
 ball.goto(0, 0)
 ball.dx = 0.13
