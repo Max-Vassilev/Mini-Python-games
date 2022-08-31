@@ -1,17 +1,35 @@
-first_num = int(input('Enter the first number:'))
-operator = input('What would you like to do with the numbers?')
-second_num = int(input('Enter the second number:'))
+first_num = int(input())
+operator_of_nums = input()
+second_num = int(input())
 
-def calculations(a,b):
-    if operator == "multiply":
-        return a * b
-    elif operator == "divide":
-        return a / b
-    elif operator == "add":
-        return a + b
-    elif operator == "subtract":
-        return a - b
+def adding(a, b):
+    return a + b
 
-print(int(calculations(first_num, second_num)))
+def substraction(a, b):
+    return a - b
+
+def multiplication(a, b):
+    return a * b
+
+def division(a, b):
+    return a/b
 
 
+def calculator(num_1, num_2, operator):
+
+    if operator == '+':
+        return adding(num_1, num_2)
+
+    elif operator == '-':
+        return substraction(num_1, num_2)
+
+    elif operator == '*':
+        return f"{multiplication(num_1, num_2):.2f}"
+
+    elif operator == '/':
+        return f"{division(num_1, num_2):.2f}"
+
+
+result = calculator(first_num, second_num, operator_of_nums)
+
+print(result)
