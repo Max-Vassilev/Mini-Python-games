@@ -1,7 +1,7 @@
 import turtle
 
 window = turtle.Screen()
-window.title("Ping pong 2")
+window.title("Ping Pong")
 window.bgcolor("blue")
 window.setup(width=800, height=500)
 window.tracer(0)
@@ -32,7 +32,7 @@ paddle_b.shapesize(8, 1)
 # Ball
 ball = turtle.Turtle()
 ball.speed(0)
-ball.shape("square")
+ball.shape("circle")
 ball.color("orange")
 ball.penup()
 ball.goto(0, 0)
