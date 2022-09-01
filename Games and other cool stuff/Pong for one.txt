@@ -7,6 +7,7 @@ window.setup(800, 500)
 window.tracer(0)
 score_counter = 0
 misses_counter = 0
+best_score_counter = 0
 
 # Score counter
 score = turtle.Turtle()
@@ -17,6 +18,14 @@ score.hideturtle()
 score.goto(0, 200)
 score.write(f"Score: 0", align="center", font=("Courier", 22, "normal"))
 
+# "Best score" counter
+best_score = turtle.Turtle()
+best_score.speed(0)
+best_score.color("black")
+best_score.penup()
+best_score.hideturtle()
+best_score.goto(-260, 200)
+
 # "Lives left" sign
 lives_sign = turtle.Turtle()
 lives_sign.speed(0)
@@ -25,6 +34,12 @@ lives_sign.penup()
 lives_sign.hideturtle()
 lives_sign.goto(230, 200)
 lives_sign.write("Lives left: ", align="center", font=("Courier", 22, "normal"))
+
+# "Game over sign"
+over_sign = turtle.Turtle()
+over_sign.speed(0)
+over_sign.penup()
+over_sign.hideturtle()
 
 # Paddle
 paddle = turtle.Turtle()
@@ -42,8 +57,8 @@ ball.shape("circle")
 ball.speed(0)
 ball.penup()
 ball.shapesize(1, 1)
-ball.dx = 0.1
-ball.dy = 0.1
+ball.dx = 0.15
+ball.dy = 0.15
 
 # Live one
 live_1 = turtle.Turtle()
@@ -104,7 +119,6 @@ while True:
     if ball.ycor() > 240:
         ball.sety(240)
         ball.dy *= -1
-
     # Lower
     elif ball.ycor() < -240:
         ball.goto(0, 0)
@@ -113,12 +127,10 @@ while True:
         score.clear()
         misses_counter += 1
         score.write(f"Score: {score_counter}", align="center", font=("Courier", 22, "normal"))
-
     # Right
     elif ball.xcor() > 385:
         ball.setx(385)
         ball.dx *= -1
-
     # Left
     elif ball.xcor() < -385:
         ball.setx(-385)
@@ -132,6 +144,14 @@ while True:
     elif misses_counter == 3:
         live_1.color("grey")
 
+    # "Game over" function
+    if misses_counter >= 3:
+        over_sign.clear()
+        over_sign.color("black")
+        over_sign.write("Game over!", align="center", font=("Courier", 30, "normal"))
+        ball.color("grey")
+        best_score.write(f"Best score: {best_score_counter}", align="center", font=("Courier", 22, "normal"))
+
     # Paddle and ball collisions
     if (-180 > ball.ycor() > -190) and (paddle.xcor() + 70 > ball.xcor() > paddle.xcor() - 70):
         ball.sety(-180)
@@ -142,4 +162,9 @@ while True:
         if score_counter % 5 == 0:
             ball.dx += 0.02
             ball.dy += 0.02
-            
+
+    # "Best score" function
+    if score_counter > best_score_counter:
+        best_score_counter = score_counter
+        best_score.clear()
+
