@@ -87,6 +87,16 @@ turtle.onkeypress(paddle_b_down, "l")
 # Main game loop
 while True:
     window.update()
+    # Paddle boundaries
+    if paddle_b.ycor() > 180:
+        paddle_b.goto(350, 180)
+    elif paddle_b.ycor() < -180:
+        paddle_b.goto(350, -180)
+
+    if paddle_a.ycor() > 180:
+        paddle_a.goto(-350, 180)
+    elif paddle_a.ycor() < -180:
+        paddle_a.goto(-350, -180)
 
     # Move the ball
     ball.setx(ball.xcor() + ball.dx)
