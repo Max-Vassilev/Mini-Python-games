@@ -1,0 +1,105 @@
+import turtle
+
+window = turtle.Screen()
+window.title("Pong for one")
+window.bgcolor("grey")
+window.setup(800, 500)
+window.tracer(0)
+score_counter = 0
+
+# Score counter
+score = turtle.Turtle()
+score.speed(0)
+score.color("black")
+score.penup()
+score.hideturtle()
+score.goto(0, 200)
+score.write(f"Score: 0", align="center", font=("Courier", 22, "normal"))
+
+
+
+# Paddle
+paddle = turtle.Turtle()
+paddle.color("white")
+paddle.shape("square")
+paddle.speed(0)
+paddle.penup()
+paddle.shapesize(1, 7)
+paddle.goto(0, -200)
+
+# Ball
+ball = turtle.Turtle()
+ball.color("yellow")
+ball.shape("circle")
+ball.speed(0)
+ball.penup()
+ball.shapesize(1, 1)
+ball.dx = 0.08
+ball.dy = 0.08
+
+# Function
+
+
+def paddle_left():
+    x = paddle.xcor()
+    x -= 20
+    paddle.setx(x)
+
+
+def paddle_right():
+    x = paddle.xcor()
+    x += 20
+    paddle.setx(x)
+
+# Paddle movement
+
+
+window.listen()
+window.onkeypress(paddle_left, "Left")
+window.onkeypress(paddle_right, "Right")
+
+# if paddle.xcor() > 330:
+#     paddle.goto(330, -210)
+#  I have to fix the disappearing paddle
+
+while True:
+    window.update()
+
+    # Ball movement
+    ball.setx(ball.xcor() + ball.dx)
+    ball.sety(ball.ycor() + ball.dy)
+
+    # Boarder checking
+    if ball.ycor() > 240:
+        ball.sety(240)
+        ball.dy *= -1
+    elif ball.ycor() < -240:
+        ball.goto(0, 0)
+        ball.dy *= -1
+        score_counter = 0
+        score.clear()
+        score.write(f"Score: {score_counter}", align="center", font=("Courier", 22, "normal"))
+
+    elif ball.xcor() > 385:
+        ball.setx(385)
+        ball.dx *= -1
+
+    elif ball.xcor() < -385:
+        ball.setx(-385)
+        ball.dx *= -1
+
+    # Paddle and ball collisions
+    if (-180 > ball.ycor() > -190) and (ball.xcor() < paddle.xcor() + 70 and ball.xcor() > paddle.xcor() - 70):
+        ball.sety(-180)
+        ball.dy *= -1
+        score_counter += 1
+        score.clear()
+        score.write(f"Score: {score_counter}", align="center", font=("Courier", 22, "normal"))
+        if score_counter % 5 == 0:
+            ball.dx += 0.01
+            ball.dy += 0.01
+
+
+
+
+
