@@ -10,6 +10,7 @@ Few minutes after finishing the code of my first game ("Ping Pong") I decided th
 <img width="658" alt="Screenshot 2022-09-01 140759" src="https://user-images.githubusercontent.com/106106321/187901110-9a063b73-0472-42fd-9999-c30c8593ba6d.png">
 
 After three misses you lose the game. The "Game over" sign shows up and you get to see your best score.
-<img width="614" alt="Screenshot 2022-09-01 160229" src="https://user-images.githubusercontent.com/106106321/187920386-66afa19d-02a0-4299-a71a-2296bd58bb65.png">
+<img width="614" alt="Screenshot 2022-09-01 171727" src="https://user-images.githubusercontent.com/106106321/187936864-fdde27fa-31aa-4abe-a721-d2412580a81f.png">
+
 
 
