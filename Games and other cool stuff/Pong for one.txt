@@ -6,6 +6,7 @@ window.bgcolor("grey")
 window.setup(800, 500)
 window.tracer(0)
 score_counter = 0
+misses_counter = 0
 
 # Score counter
 score = turtle.Turtle()
@@ -16,7 +17,14 @@ score.hideturtle()
 score.goto(0, 200)
 score.write(f"Score: 0", align="center", font=("Courier", 22, "normal"))
 
-
+# "Lives left" sign
+lives_sign = turtle.Turtle()
+lives_sign.speed(0)
+lives_sign.color("black")
+lives_sign.penup()
+lives_sign.hideturtle()
+lives_sign.goto(230, 200)
+lives_sign.write("Lives left: ", align="center", font=("Courier", 22, "normal"))
 
 # Paddle
 paddle = turtle.Turtle()
@@ -34,8 +42,29 @@ ball.shape("circle")
 ball.speed(0)
 ball.penup()
 ball.shapesize(1, 1)
-ball.dx = 0.08
-ball.dy = 0.08
+ball.dx = 0.1
+ball.dy = 0.1
+
+# Live one
+live_1 = turtle.Turtle()
+live_1.penup()
+live_1.color("red")
+live_1.goto(200, 185)
+live_1.shapesize(2, 2)
+
+# Live two
+live_2 = turtle.Turtle()
+live_2.penup()
+live_2.color("red")
+live_2.goto(230, 185)
+live_2.shapesize(2, 2)
+
+# Live three
+live_3 = turtle.Turtle()
+live_3.penup()
+live_3.color("red")
+live_3.goto(260, 185)
+live_3.shapesize(2, 2)
 
 # Function
 
@@ -62,6 +91,7 @@ window.onkeypress(paddle_right, "Right")
 #     paddle.goto(330, -210)
 #  I have to fix the disappearing paddle
 
+# Main game loop
 while True:
     window.update()
 
@@ -69,37 +99,47 @@ while True:
     ball.setx(ball.xcor() + ball.dx)
     ball.sety(ball.ycor() + ball.dy)
 
-    # Boarder checking
+    # Boarder checking:
+    # Upper
     if ball.ycor() > 240:
         ball.sety(240)
         ball.dy *= -1
+
+    # Lower
     elif ball.ycor() < -240:
         ball.goto(0, 0)
         ball.dy *= -1
         score_counter = 0
         score.clear()
+        misses_counter += 1
         score.write(f"Score: {score_counter}", align="center", font=("Courier", 22, "normal"))
 
+    # Right
     elif ball.xcor() > 385:
         ball.setx(385)
         ball.dx *= -1
 
+    # Left
     elif ball.xcor() < -385:
         ball.setx(-385)
         ball.dx *= -1
 
+    # Misses counting and removing lives from the bar
+    if misses_counter == 1:
+        live_3.color("grey")
+    elif misses_counter == 2:
+        live_2.color("grey")
+    elif misses_counter == 3:
+        live_1.color("grey")
+
     # Paddle and ball collisions
-    if (-180 > ball.ycor() > -190) and (ball.xcor() < paddle.xcor() + 70 and ball.xcor() > paddle.xcor() - 70):
+    if (-180 > ball.ycor() > -190) and (paddle.xcor() + 70 > ball.xcor() > paddle.xcor() - 70):
         ball.sety(-180)
         ball.dy *= -1
         score_counter += 1
         score.clear()
         score.write(f"Score: {score_counter}", align="center", font=("Courier", 22, "normal"))
         if score_counter % 5 == 0:
-            ball.dx += 0.01
-            ball.dy += 0.01
-
-
-
-
-
+            ball.dx += 0.02
+            ball.dy += 0.02
+            
