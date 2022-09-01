@@ -102,13 +102,13 @@ window.listen()
 window.onkeypress(paddle_left, "Left")
 window.onkeypress(paddle_right, "Right")
 
-# if paddle.xcor() > 330:
-#     paddle.goto(330, -210)
-#  I have to fix the disappearing paddle
-
 # Main game loop
 while True:
     window.update()
+    if paddle.xcor() > 330:
+        paddle.goto(330, -200)
+    if paddle.xcor() < -330:
+        paddle.goto(-330, -200)
 
     # Ball movement
     ball.setx(ball.xcor() + ball.dx)
@@ -150,6 +150,7 @@ while True:
         over_sign.color("black")
         over_sign.write("Game over!", align="center", font=("Courier", 30, "normal"))
         ball.color("grey")
+        paddle.color("grey")
         best_score.write(f"Best score: {best_score_counter}", align="center", font=("Courier", 22, "normal"))
 
     # Paddle and ball collisions
@@ -167,4 +168,3 @@ while True:
     if score_counter > best_score_counter:
         best_score_counter = score_counter
         best_score.clear()
-
