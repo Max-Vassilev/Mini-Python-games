@@ -15,7 +15,7 @@ while True:
     else:
         continue
 
-    if current_question == 'Where was Bulgaria founded?':
+    if current_question == 'When was Bulgaria founded?':
         answer = input('Enter your answer: ')
         if answer == '681':
             print('Correct answer!\n')
