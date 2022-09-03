@@ -16,7 +16,7 @@ After three misses you lose the game. The "Game over" sign shows up and you get 
 I also recreated the famous "Snake" game. What a fun and challenging project! It includes a score counter and it also shows the "best result" of the previus attempts. Here is a screenshot of the game:
 <img width="449" alt="snake game" src="https://user-images.githubusercontent.com/106106321/188277768-269f3a6b-4e94-4bbf-acc4-7096d2a89f51.png">
 
-I also added a "Pause game" option to the game. Whem you press "p" the snake stops and the game is paused. Also the "Game paused" shows up.
+I also added a "Pause game" option to the game. When you press "p" the snake stops and the game is paused. Also the "Game paused" shows up.
 
 <img width="495" alt="Screenshot 2022-09-03 183050" src="https://user-images.githubusercontent.com/106106321/188277881-2f50506b-c6e8-4a4a-b47e-1378b97a6fc8.png">
 
