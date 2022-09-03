@@ -2,13 +2,14 @@ import turtle
 import random
 import time
 
-delay = 0.3
+delay = 0.1
 segments = []
 score = 0
 best_score = 0
 
 # Window
 window = turtle.Screen()
+window.title("Snake")
 window.setup(width=500, height=500)
 window.bgcolor("green")
 window.tracer(0)
@@ -21,6 +22,15 @@ line.color("white")
 line.shapesize(0.05, 250)
 line.penup()
 line.goto(0, 170)
+
+# Pause sign
+pause_sign = turtle.Turtle()
+pause_sign.hideturtle()
+pause_sign.color("green")
+pause_sign.penup()
+pause_sign.speed(0)
+pause_sign.goto(0, 0)
+pause_sign.write(f"Game paused", align="center", font=("Courier", 30, "normal"))
 
 # Head
 head = turtle.Turtle()
@@ -72,6 +82,10 @@ def move_right():
         head.direction = "right"
 
 
+def pause():
+    head.direction = "pause"
+
+
 def move():
     if head.direction == "up":
         y_up = head.ycor()
@@ -98,6 +112,7 @@ turtle.onkeypress(move_up, "w")
 turtle.onkeypress(move_down, "s")
 turtle.onkeypress(move_left, "a")
 turtle.onkeypress(move_right, "d")
+turtle.onkeypress(pause, "p")
 
 
 # Main game loop
@@ -105,6 +120,15 @@ while True:
     window.update()
 
     time.sleep(delay)
+
+    # Pause sign function
+    if head.direction == "pause":
+
+        pause_sign.color("white")
+        pause_sign.write(f"Game paused", align="center", font=("Courier", 30, "normal"))
+
+    else:
+        pause_sign.clear()
 
     # Check for collisions with the head and the food
     if head.distance(food) < 20:
@@ -158,13 +182,14 @@ while True:
         segments.clear()
 
     # Moving the segments
-    if len(segments) > 0:
-        for i in range(len(segments)-1, 0, -1):
-            x = segments[i-1].xcor()
-            y = segments[i-1].ycor()
-            segments[i].goto(x, y)
-        x = head.xcor()
-        y = head.ycor()
-        segments[0].goto(x, y)
+    if head.direction != "pause":
+        if len(segments) > 0:
+            for i in range(len(segments) - 1, 0, -1):
+                x = segments[i - 1].xcor()
+                y = segments[i - 1].ycor()
+                segments[i].goto(x, y)
+            x = head.xcor()
+            y = head.ycor()
+            segments[0].goto(x, y)
 
     move()
