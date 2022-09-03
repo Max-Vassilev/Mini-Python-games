@@ -2,7 +2,7 @@ import turtle
 import random
 import time
 
-delay = 0.3
+delay = 0.1
 segments = []
 score = 0
 best_score = 0
