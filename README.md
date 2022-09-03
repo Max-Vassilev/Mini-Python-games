@@ -14,6 +14,6 @@ After three misses you lose the game. The "Game over" sign shows up and you get 
 
 
 I also recreated the famous "Snake" game. What a fun and challenging project! It includes a score counter and it also shows the "best result" of the previus attempts. Here is a screenshot of the game:
-<img width="431" alt="Screenshot 2022-09-03 164958" src="https://user-images.githubusercontent.com/106106321/188273448-2f3bbf6f-6337-41b6-8624-ba36ef893c4a.png">
+<img width="449" alt="snake game" src="https://user-images.githubusercontent.com/106106321/188277768-269f3a6b-4e94-4bbf-acc4-7096d2a89f51.png">
 
 
