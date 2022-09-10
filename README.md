@@ -1,7 +1,6 @@
 Here you will see some simple projects I am working on. Most of them are written in Python as I am currently learning and working mainly with this language.   
 
 
-
 One of my first projects was the "Ping Pong" game. You can see a screenshot of it below:
 <img width="647" alt="Screenshot 2022-09-01 142040" src="https://user-images.githubusercontent.com/106106321/187902192-88f4b85e-81aa-43c1-ae83-21a9896b4b7f.png">
 
