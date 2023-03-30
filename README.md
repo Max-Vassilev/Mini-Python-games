@@ -1,4 +1,4 @@
-Here you will see some simple Python projects/games I am used to work on. 
+Here you will see some simple Python projects/games I am used to work on. For most of them I used the "turtle" library. 
 
 The first game is called "Ping Pong". You can see a screenshot of it below:
 
