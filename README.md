@@ -1,4 +1,4 @@
-Here you will see some simple projects I am working on. Most of them are written in Python as I am currently learning and working mainly with this language.   
+Here you will see some simple projects I am used to work on. Most of them are written in Python as I am currently learning and working mainly with this language.   
 
 
 One of my first projects was the "Ping Pong" game. You can see a screenshot of it below:
